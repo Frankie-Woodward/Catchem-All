@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon TCG Decks</title>
+    <link rel="stylesheet" href="/styles/home.css">
+</head>
+<body>
+    <h1>Welcome to the Pokemon TCG Decks Website</h1>
+    
+    <!-- Decks -->
+    <h2>All Standard Legal Decks</h2>
+    
+    <ul class="decks-list">
+        <% decks.forEach(deck => { %>
+            <li class="deck-container">
+                <div class="deck-scrollable">
+                    <a href="/selectdeck/<%= deck.id %>"> <!-- Updated link -->
+                        <img src="<%= deck.picture %>" alt="<%= deck.name %>">
+                    </a>
+                    <h2><%= deck.name %></h2>
+                    <p>Release Date: <%= deck.released %></p>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
+
+

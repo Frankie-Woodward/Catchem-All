@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Deck</title>
+    <!-- Add any additional styles or scripts you need -->
+</head>
+<body>
+    <h1>Select Deck</h1>
+
+    <!-- Display deck details -->
+    <h2>Deck Details</h2>
+    <ul>
+        <li>ID: <%= deckData.id %></li>
+        <li>Name: <%= deckData.name %></li>
+        <li>Released: <%= deckData.released %></li>
+        <!-- Add any other deck details you have -->
+    </ul>
+
+    <!-- Display cards -->
+    <h2>Cards</h2>
+    <ul>
+        <% deckData.cards.forEach(card => { %>
+            <li>
+                <img src="<%= card.imageUrl %>" alt="<%= card.name %>">
+                <h3><%= card.name %></h3>
+                <p>Card Type: <%= card.cardType %></p>
+                <!-- Add other card details as needed -->
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
