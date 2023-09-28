@@ -16,13 +16,14 @@ const api = require('./models');
 /* Require the routes in the controllers folder
 --------------------------------------------------------------- */
 
-// const popsCtrlr = require('./controllers/popFigs')
-// const reviewsCtrl = require('./controllers/pop-reviews')
+const userCtrlr = require('./controllers/users')
+const userDeckCtrlr = require('./controllers/userdecks')
 
 /* Create the Express app
 --------------------------------------------------------------- */
 const app = express();
-
+const axios = require('axios');
+let axiosInst = axios
 
 /* Configure the app to refresh the browser when nodemon restarts
 --------------------------------------------------------------- */
@@ -60,23 +61,55 @@ app.get('/', (req, res) => {
         .then(decks => res.render('home', { decks: decks }))
 })
 
-app.get('/deck/:id', (req, res) => {
-    const deckId = req.params.id; // Get the deck ID from the URL parameter
 
-    // Fetch the specific deck data using the deckId
-    api.getAllDecks(deckId)
-        .then(deckData => {
-            // Render the selectdeck.ejs template and pass the deckData to it
-            res.render('decks/selectdeck', { deckData });
-        })
-        .catch(error => {
-            // Handle errors here, e.g., render an error page or redirect
-            console.error(error);
-            res.status(500).send('An error occurred.');
-        });
+// Get deck data and generate deck endpoints
+// Get deck data and generate deck endpoints
+app.get('/selectdeck/:name', async (req, res) => {
+    const deckName = req.params.name;
+
+    try {
+        // Get all decks and find the specific deck by name
+        const standardDecks = await api.getAllDecks();
+        const deck = standardDecks.find(deck => deck.name === deckName);
+
+        if (!deck) {
+            // Handle the case when the deck with the specified name is not found
+            return res.status(404).send('Deck not found');
+        }
+
+        if (!deck.id) {
+            // Handle the case when the deck's ID is missing or undefined
+            return res.status(500).send('Deck ID is missing or undefined');
+        }
+
+        const deckEndpoint = api.getDeckEndpoint(deck.id);
+        console.log('deckEndpoint:', deckEndpoint);
+
+        // Fetch the cards for the selected deck
+        const cardsResponse = await axiosInst.get(deckEndpoint);
+        const deckCards = cardsResponse.data.data;
+        console.log(deckCards);
+
+        // Render the EJS template with deck data and the retrieved deck cards
+        res.render('decks/selectdeck', { deck, deckCards, deckName });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred.');
+    }
 });
 
 
+
+
+
+app.use('/users', userCtrlr)
+
+// app.use('/userdecks', userDeckCtrlr)
+
+// The "catch-all" route: Runs for any other URL that doesn't match the above routes
+app.get('*', function (req, res) {
+    res.render('404')
+});
 
 // Tell the app to listen on the specified port
 

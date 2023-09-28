@@ -7,28 +7,34 @@
     <!-- Add any additional styles or scripts you need -->
 </head>
 <body>
-    <h1>Select Deck</h1>
+    <h1><%= deck.name.toUpperCase() %></h1>
 
     <!-- Display deck details -->
     <h2>Deck Details</h2>
     <ul>
-        <li>ID: <%= deckData.id %></li>
-        <li>Name: <%= deckData.name %></li>
-        <li>Released: <%= deckData.released %></li>
-        <!-- Add any other deck details you have -->
+        <li>ID: <%= deck.id %></li>
+        <li>Name: <%= deck.name %></li>
+        <li>Released: <%= deck.released %></li>
+        <li>Picture: <%= deck.picture %></li>
+
     </ul>
 
-    <!-- Display cards -->
-    <h2>Cards</h2>
-    <ul>
-        <% deckData.cards.forEach(card => { %>
-            <li>
-                <img src="<%= card.imageUrl %>" alt="<%= card.name %>">
-                <h3><%= card.name %></h3>
-                <p>Card Type: <%= card.cardType %></p>
-                <!-- Add other card details as needed -->
-            </li>
-        <% }); %>
-    </ul>
+
+<!-- Display cards -->
+<h2>Deck Cards</h2>
+<ul>
+    <% deckCards.forEach(card => { %>
+        <li>
+            <% console.log(card); %>
+            <!-- Use the card's image URL -->
+            <img src="<%= card.images.small %>" alt="<%= card.name %>">
+      
+
+            <h3><%= card.name %></h3>
+            <!-- Add other card details as needed -->
+        </li>
+    <% }); %>
+</ul>
+
 </body>
 </html>

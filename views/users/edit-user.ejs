@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+    <h1>Edit Your Profile</h1>
+    <form method="POST" action="/users/<%= user._id %>?_method=PUT">
+        <label for="name"> Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="photo">Photo (URL):</label>
+        <input type="text" id="photo" name="photo" required>
+        
+        <label for="faction">Faction:</label>
+        <input type="text" id="faction" name="faction" required>
+
+        <label for="dateJoined">Date Joined:</label>
+        <input type="date" id="dateJoined" name="dateJoined" required>
+
+        <label for="decks">Decks:</label>
+        <input type="number" id="decks" name="decks" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+ 
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
