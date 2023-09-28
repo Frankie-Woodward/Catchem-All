@@ -17,7 +17,7 @@ const api = require('./models');
 --------------------------------------------------------------- */
 
 const userCtrlr = require('./controllers/users')
-const userDeckCtrlr = require('./controllers/userdecks')
+// const userDeckCtrlr = require('./controllers/userdecks')
 
 /* Create the Express app
 --------------------------------------------------------------- */
