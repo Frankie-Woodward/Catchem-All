@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Deck</title>
+    <link rel="stylesheet" href="/styles/decks.css">
     <!-- Add any additional styles or scripts you need -->
 </head>
 <body>
@@ -19,22 +20,23 @@
 
     </ul>
 
-
+<div class="cards">
 <!-- Display cards -->
 <h2>Deck Cards</h2>
+
 <ul>
     <% deckCards.forEach(card => { %>
-        <li>
+        <li class="card-item">
             <% console.log(card); %>
             <!-- Use the card's image URL -->
             <img src="<%= card.images.small %>" alt="<%= card.name %>">
-      
+            <input type="checkbox" id="select">
 
             <h3><%= card.name %></h3>
             <!-- Add other card details as needed -->
         </li>
     <% }); %>
 </ul>
-
+</div>
 </body>
 </html>
