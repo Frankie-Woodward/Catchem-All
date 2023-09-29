@@ -17,7 +17,7 @@ const api = require('./models');
 --------------------------------------------------------------- */
 
 const userCtrlr = require('./controllers/users')
-// const userDeckCtrlr = require('./controllers/userdecks')
+const userDeckCtrlr = require('./controllers/userdecks')
 
 /* Create the Express app
 --------------------------------------------------------------- */
@@ -108,7 +108,7 @@ app.get('/selectdeck/:name', async (req, res) => {
 
 app.use('/users', userCtrlr)
 
-// app.use('/userdecks', userDeckCtrlr)
+app.use('/users/decks', userDeckCtrlr)
 
 // The "catch-all" route: Runs for any other URL that doesn't match the above routes
 app.get('*', function (req, res) {

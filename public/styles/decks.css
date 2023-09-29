@@ -1,19 +1,23 @@
 body {
-    background-color: antiquewhite;
+    background-color: rgb(178, 233, 240);
+
 }
     
 .cards {
     display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap to the next line */
-    gap: 10px; /* Spacing between cards */
-    justify-content: flex-start; /* Align cards to the start of the container */
-    padding: 20px; /* Add some padding to the container */
+    flex-wrap: wrap;
+    justify-content: space-between;
+
 }
 
 .card-item {
-    flex: 0 0 calc(33.33% - 10px); /* Adjust card width as needed (3 columns) */
-    background-color: white; /* Add background color to each card */
-    padding: 10px; /* Add spacing around each card */
-    border: 1px solid #ccc; /* Add a border to separate cards */
-    text-align: center; /* Center-align text within each card */
+    flex: 0 0 calc(30%-20px);
+    margin: 10px;
+    text-align: center;
+
+}
+
+.card-item img {
+    max-width: 100%;
+    height: auto;
 }

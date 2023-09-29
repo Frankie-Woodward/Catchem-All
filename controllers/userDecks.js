@@ -1,35 +1,35 @@
 // /* Require modules
 // --------------------------------------------------------------- */
-// require('dotenv').config()
-// const express = require('express')
-// // const router = express.Router()
+require('dotenv').config()
+const express = require('express')
+const router = express.Router()
 
 
 // /* Require the db connection, and models
 // --------------------------------------------------------------- */
-// const db = require('../models')
+const db = require('../models')
 
 
 // // Index Route (GET/Read): Will display all saved decks
-// router.get('/', (req, res) => {
-//     db.User.find({}, { decks: true, _id: false })
-//         .then(decks => {
-//             // format query results to appear in one array, 
-//             // rather than an array of objects containing arrays 
-//             const flatList = []
-//             for (let user of decks) {
-//                 flatList.push(...user.decks)
-//             }
-//             res.render('decks/customdecks',
-//                 { decks: flatList }
-//             )
-//         })
-// });
+router.get('/', (req, res) => {
+    db.User.find({}, { decks: true, _id: false })
+        .then(decks => {
+            // format query results to appear in one array, 
+            // rather than an array of objects containing arrays 
+            const flatList = []
+            for (let user of decks) {
+                flatList.push(...user.decks)
+            }
+            res.render('decks/customdecks',
+                { decks: flatList }
+            )
+        })
+});
 // New Route (GET/Read): This route renders a form 
-// which the user will fill out to POST (create) a new user profile
-// router.get('/new', (req, res) => {
-//     res.render('users/new-user')
-// })
+// which the user will fill out to POST (create) a new deck
+router.get('/new', (req, res) => {
+    res.render('decks/new-deck')
+})
 
 // Create Route (POST/Create): This route receives the POST request sent from the new route,
 // creates a new user document using the form data, 
@@ -79,4 +79,4 @@
 
 // /* Export these routes so that they are accessible in `server.js`
 // // --------------------------------------------------------------- */
-// module.exports = router
+module.exports = router
