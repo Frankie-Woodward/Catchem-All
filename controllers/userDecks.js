@@ -9,22 +9,26 @@ const router = express.Router()
 // --------------------------------------------------------------- */
 const db = require('../models')
 
-
-// // Index Route (GET/Read): Will display all saved decks
-router.get('/', (req, res) => {
+// Index Route (GET/Read): Will display all saved decks
+router.get('/', function (req, res) {
     db.User.find({}, { decks: true, _id: false })
+    console.log(decks)
         .then(users => {
-            // format query results to appear in one array, 
-            // rather than an array of objects containing arrays 
-            const flatList = []
-            for (let user of users) {
-                flatList.push(...user.decks)
-            }
-            res.render('decks/userdecks',
-                { decks: flatList }
-            )
+            // format query results to appear in one array
+            const flatList = users.reduce((acc, user) => {
+                if (user.decks && user.decks.length > 0) {
+                    acc.push(...user.decks);
+                }
+                return acc;
+            }, []);
+            res.render('decks/userdecks', { users: flatList }); // Pass 'users' instead of 'decks'
         })
+        .catch(error => {
+            console.error(error);
+            res.status(500).send('An error occurred.');
+        });
 });
+
 // New Route (GET/Read): This route renders a form 
 // which the user will fill out to POST (create) a new deck
 router.get('/new/:userId', async (req, res) => {
@@ -43,16 +47,16 @@ router.post('/create/:userId', (req, res) => {
     )
     .then(user => res.redirect('/decks/' + user._id))
 });
-// Show Route (GET/Read): Will display an individual pop figure
+// Show Route (GET/Read): Will display an individual deck figure
 // using the URL parameter (which is the document _id)
 router.get('/:userId', function (req, res) {
-    db.User.findOne(
+    db.User.find(
         { 'decks._id': req.params.id },
         { 'decks.$': true, _id: false }
         )
         .then(user => {
             
-            res.render('decks/userdeck', 
+            res.render('decks/userdecks', 
             { user: user.decks[0] }
             
             )

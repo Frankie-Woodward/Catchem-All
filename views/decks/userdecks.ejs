@@ -11,20 +11,20 @@
     
     <!-- Decks -->
     <h2>All Standard Legal Decks</h2>
-    
-    <ul class="decks-list">
-        <% decks.forEach(deck => { %>
-            <li class="deck-container">
-                <div class="deck-scrollable">
-                    <a href="/selectdeck/<%= deck.id %>"> <!-- Updated link -->
-                        <img src="<%= deck.picture %>" alt="<%= deck.name %>">
-                    </a>
-                    <h2><%= deck.name %></h2>
-                    <p>Release Date: <%= deck.released %></p>
-                </div>
-            </li>
-        <% }); %>
-    </ul>
+
+    <main>
+        <section class="Reviews">
+            <ul>
+                <% for (let user of users) { %>
+                <li>
+                    <h4><%= user.userDeckName %> - <%= user.userDeckPhoto %></h4>
+                    <p>Created: <%= user.userDeckDateAdded %></p>
+                    <a href="/users/decks/<%= user._id %>">Read More</a>
+                </li>
+                <% } %>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
 

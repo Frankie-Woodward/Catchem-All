@@ -6,8 +6,7 @@ const userSchema = new mongoose.Schema({
     photo: { type: String },
     faction: { type: String, required: true },
     dateJoined: { type: Date, default: Date.now },
-    decks: {customDeckSchema}
-
+    decks: [customDeckSchema]
 });
 
 module.exports = mongoose.model('User', userSchema);
