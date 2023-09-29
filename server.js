@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 /* Require the db connection, models, and seed data
 --------------------------------------------------------------- */
 const db = require('./models');
-const api = require('./models');
+const api = require('./models');  
 
 
 /* Require the routes in the controllers folder

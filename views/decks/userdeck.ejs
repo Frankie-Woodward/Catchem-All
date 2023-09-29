@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Deck</title>
+    <!-- Add any additional styles or scripts you need -->
+</head>
+<body>
+    <h1>Custom Deck</h1>
+
+    <!-- Display deck details -->
+<section class="deck-details">
+    <h2>Deck Details</h2>
+ 
+    <h3>Name: <%= user.deckName %></h3>
+    <table>
+        <tr>
+            <th>
+                <h4> <%= user.deckPhoto %> </h4>
+            </th>
+            <td>
+                <h4><%= user.dateAdded %></h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h5>Cards:</h5>
+            </th>
+            <td>
+                <h5><%= user.deckCards %></h5>
+            </td>
+        </tr>
+    </table>
+
+        <!-- Add any other deck details you have -->
+
+</section>
+    <!-- Display cards -->
+
+</body>
+</html>

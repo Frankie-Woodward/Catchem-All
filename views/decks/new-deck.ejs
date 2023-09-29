@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Deck</title>
-    <!-- Add any additional styles or scripts you need -->
+    <title> New Deck </title>
 </head>
 <body>
-    <h1>Custom Deck</h1>
+    <h1>Create Your Deck!</h1>
 
-    <!-- Display deck details -->
-    <h2>Deck Details</h2>
-    <ul>
-        <li>ID: <%= decks.id %></li>
-        <li>Name: <%= decks.name %></li>
-        <li>Released: <%= decks.released %></li>
-        <!-- Add any other deck details you have -->
-    </ul>
+    <h2> Create Your New Deck Below!</h2>
+    <form action="/users/decks/create/<%= user._id %>" method="POST">
+        <label for="deckName">Deck Name:</label><br>
+        <input type="text" id="deckName" name="deckName" required><br>
 
-    <!-- Display cards -->
-    <h2>Cards</h2>
-    <ul>
-        <% standardDecks.data.forEach(card => { %>
-            <li>
-                <img src="<%= card.imageUrl %>" alt="<%= card.name %>">
-                <h3><%= standardDecks.name %></h3>
-                <p>Card Type: <%= standardDecks.cardType %></p>
-                <!-- Add other card details as needed -->
-            </li>
-        <% }); %>
-    </ul>
+        <label for="deckPhoto">Deck Avatar:</label><br>
+        <input type="text" id="deckPhoto" name="deckPhoto" required><br>
+
+        <label for="dateAdded">Date:</label><br>
+        <input type="date" id="dateAdded" name="dateAdded"><br>
+
+
+        <label for="deckCards">Pokemon Cards:</label><br>
+        <input type="text" id="deckCards" name="deckCards"><br>
+
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

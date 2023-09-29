@@ -13,40 +13,51 @@ const db = require('../models')
 // // Index Route (GET/Read): Will display all saved decks
 router.get('/', (req, res) => {
     db.User.find({}, { decks: true, _id: false })
-        .then(decks => {
+        .then(users => {
             // format query results to appear in one array, 
             // rather than an array of objects containing arrays 
             const flatList = []
-            for (let user of decks) {
+            for (let user of users) {
                 flatList.push(...user.decks)
             }
-            res.render('decks/customdecks',
+            res.render('decks/userdecks',
                 { decks: flatList }
             )
         })
 });
 // New Route (GET/Read): This route renders a form 
 // which the user will fill out to POST (create) a new deck
-router.get('/new', (req, res) => {
-    res.render('decks/new-deck')
+router.get('/new/:userId', async (req, res) => {
+    const user = db.User.findById(req.params.userId)
+    res.render('decks/new-deck', {user: user} )
 })
 
 // Create Route (POST/Create): This route receives the POST request sent from the new route,
 // creates a new user document using the form data, 
 // and redirects the user to their show page
-// router.post('/', (req, res) => {
-//     console.log(req.body)
-//     db.User.create(req.body)
-//         .then(user => res.redirect('/users/' + user._id))
-// })
-
-// // // Show Route (GET/Read): Will display an individual pop figure
-// // // using the URL parameter (which is the document _id)
-// router.get('/:id', function (req, res) {
-//     db.User.findById(req.params.id)
-//         .then(user => res.render('users/userProfile', { user: user}))
-//         .catch(() => res.send('404 Error: Page Not Found'))
-// })
+router.post('/create/:userId', (req, res) => {
+    db.User.findByIdAndUpdate(
+        req.params.userId,
+        { $push: { decks: req.body } },
+        { new: true }
+    )
+    .then(user => res.redirect('/decks/' + user._id))
+});
+// Show Route (GET/Read): Will display an individual pop figure
+// using the URL parameter (which is the document _id)
+router.get('/:userId', function (req, res) {
+    db.User.findOne(
+        { 'decks._id': req.params.id },
+        { 'decks.$': true, _id: false }
+        )
+        .then(user => {
+            
+            res.render('decks/userdeck', 
+            { user: user.decks[0] }
+            
+            )
+        })
+});
 
 // // // Edit Route (GET/Read): This route renders a form
 // // // the user will use to PUT (edit) properties of an existing funko pop

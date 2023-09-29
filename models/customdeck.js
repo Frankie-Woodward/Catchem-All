@@ -2,10 +2,10 @@
 
 const mongoose = require('mongoose');
 const customDeckSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    photo: { type: String, required: true},
+    deckName: { type: String, required: true },
+    deckPhoto: { type: String, required: true},
     dateAdded: { type: Date, default: Date.now },
-    cards: { type: String }
+    deckCards: { type: String }
 });
 
 // The Mongoose model will be accessed in `models/index.js`
