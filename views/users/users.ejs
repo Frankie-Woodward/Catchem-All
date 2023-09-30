@@ -8,5 +8,21 @@
 <body>
     <h1>Members of the Pokemon Factions!</h1>
     <p>Delete, Update, Create Users</p>
+    <% for (let user of users) { %>
+        <ul class="allusers"><li>
+             <figure>
+                 <img src="<%= user.photo %>" alt="<%= user.name %>">
+             </figure>
+             <figcaption>
+                 <div class="featured-info">
+                     <h3><%= user.name %></h3>
+                     <h4><%= user.faction %></h4>
+                 </div>
+                 <a href="/users/<%= user._id %>" class="btn">Go Now</a>
+             </figcaption>
+         </li>
+     </ul> 
+         
+         <% } %>
 </body>
 </html>

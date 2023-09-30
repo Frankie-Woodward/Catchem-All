@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="/styles/home.css">
 </head>
 <body>
-    <h1>Welcome to your Personal Decks!</h1>
+    <h1>Welcome to Faction Decks!</h1>
     
     <!-- Decks -->
-    <h2>All Standard Legal Decks</h2>
-
     <main>
-        <section class="Reviews">
+        <section class="user-decks">
             <ul>
                 <% for (let user of users) { %>
+                <% for (let deck of user.decks) { %>
                 <li>
-                    <h4><%= user.userDeckName %> - <%= user.userDeckPhoto %></h4>
-                    <p>Created: <%= user.userDeckDateAdded %></p>
-                    <a href="/users/decks/<%= user._id %>">Read More</a>
+                    <h4><%= deck.userDeckName %> - <%= deck.userDeckPhoto %></h4>
+                    <p>Created: <%= deck.userDeckDateAdded %></p>
+                    <a href="/userdecks/<%= deck._id %>">Read More</a>
                 </li>
+                <% } %>
                 <% } %>
             </ul>
         </section>
     </main>
-</body>
+    </body>
+    
+    
 </html>
 
 

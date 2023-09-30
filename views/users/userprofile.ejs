@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Profile</title>
 </head>
 <body>
-    <h1>Hello Mr!</h1>
+    <h1>Hello <%= user.name %> !</h1>
     <h2>Your Decks Below</h2>
+    <section class="decks-container">
+        <ul>
+            <% for (let i = 0; i < user.decks.length; i++) { %>
+                <% let deck = user.decks[i]; %>
+                <li><a href="/userdecks/<%= deck.id %>">Decks</a></li>
+            <% } %>
+        </ul>
+    </section>
+    <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+        <input class="btn" type="submit" value="Delete" />
+    </form>
 </body>
 </html>

@@ -108,7 +108,7 @@ app.get('/selectdeck/:name', async (req, res) => {
 
 app.use('/users', userCtrlr)
 
-app.use('/users/decks', userDeckCtrlr)
+app.use('/userdecks', userDeckCtrlr)
 
 // The "catch-all" route: Runs for any other URL that doesn't match the above routes
 app.get('*', function (req, res) {

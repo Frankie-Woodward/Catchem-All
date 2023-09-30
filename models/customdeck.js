@@ -1,5 +1,4 @@
 // Require the Mongoose package
-
 const mongoose = require('mongoose');
 const customDeckSchema = new mongoose.Schema({
     userDeckName: { 
@@ -15,7 +14,8 @@ const customDeckSchema = new mongoose.Schema({
         default: Date.now 
     },
     userDeckCards: { 
-        type: String 
+        type: String,
+        required: false 
     }
 });
 

@@ -10,28 +10,32 @@
     <h1>Custom Deck</h1>
 
     <!-- Display deck details -->
-<section class="deck-details">
-    <h2>Deck Details</h2>
- 
-    <h3>Name: <%= user.userDeckName %></h3>
-    <table>
-        <tr>
-            <th>
-                <h4><%= user.userDeckPhoto %></h4>
-            </th>
-            <td>
-                <h4><%= user.userDeckDateAdded %></h4>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <h5>Cards:</h5>
-            </th>
-            <td>
-                <h5><%= user.userDeckCards %></h5>
-            </td>
-        </tr>
-    </table>
+    <section class="deck-details">
+        <h2>Deck Details</h2>
+     
+        <h3>Name: <%= userDeck.userDeckName %></h3>
+        <table>
+            <tr>
+                <th>
+                    <h4><%= userDeck.userDeckPhoto %></h4>
+                </th>
+                <td>
+                    <h4><%= userDeck.userDeckDateAdded %></h4>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <h5>Cards:</h5>
+                </th>
+                <td>
+                    <h5><%= userDeck.userDeckCards %></h5>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <form method="POST" action="/userdecks/<%= userDeck._id %>?_method=DELETE">
+        <input class="btn" type="submit" value="Delete" />
+    </form>
 
         <!-- Add any other deck details you have -->
 

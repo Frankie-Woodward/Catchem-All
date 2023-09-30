@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> New Deck </title>
+    <title>Edit Deck</title>
 </head>
 <body>
-    <h1>Create Your Deck!</h1>
+    <h3>Edit Your Deck Here</h3>
 
-    <h2> Create Your New Deck Below!</h2>
+    <form action="/userdecks/<%= userDeck._id %>" method="PUT">        <!-- Use POST method to update the deck -->
 
-    <form action="/userdecks/create/<%= userId %>" method="POST">
         <label for="userDeckName">Deck Name:</label><br>
         <input type="text" id="userDeckName" name="userDeckName" required><br>
-
+    
         <label for="userDeckPhoto">Deck Avatar:</label><br>
         <input type="text" id="userDeckPhoto" name="userDeckPhoto" required><br>
-
+    
         <label for="userDeckDateAdded">Date:</label><br>
         <input type="date" id="userDeckDateAdded" name="userDeckDateAdded"><br>
-
-
+    
         <label for="userDeckCards">Pokemon Cards:</label><br>
         <input type="text" id="userDeckCards" name="userDeckCards"><br>
-
+    
         <input type="submit" value="Submit">
     </form>
+    
 </body>
 </html>
