@@ -29,18 +29,57 @@
  
         <div class="card-item">
 
-            <% console.log(card); %>
+          
             <!-- Use the card's image URL -->
             <img src="<%= card.images.small %>" alt="<%= card.name %>">
-            <input type="checkbox" id="select">
-
+            <input type="checkbox" class="select" id="select_<%= card.id %>" data-image="<%= card.images.small %>" value="<%= card.id %>">
             <h3><%= card.name %></h3>
+            
             <!-- Add other card details as needed -->
 
         </div>
    
     <% }); %>
+    <% alldecks.forEach(deck => { %>
+ 
+        <div class="card-item">
+            <button onclick="getcheckboxvalue( '<%= deck._id %> ')">Add to Deck<%= deck.userDeckName %></button>
+        </div>
+   
+    <% }); %>
 </div>
+
+<script>
+async function getcheckboxvalue(id) {
+    let checkboxes = document.querySelectorAll(".select"); // Use a class selector
+    let ids = [];
+    let images = [];
+    checkboxes.forEach(box => {
+        let ischecked = box.checked;
+        let checkboxvalue = box.value;
+        let image = box.getAttribute('data-image'); // Get the image URL from data-image attribute
+        if (ischecked) {
+            ids.push(checkboxvalue);
+            images.push(image);
+        }
+    });
+
+    console.log(ids);
+    console.log(images);
+
+    setTimeout(async function () {
+        const response = await fetch(`/userdecks/${id}`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ids: ids, images: images }) // Send both IDs and images in the request body
+        });
+    });
+}
+
+
+</script>
 
 </body>
 </html>

@@ -45,9 +45,9 @@ router.post('/create/:userId', (req, res) => {
         { $push: { decks: req.body } },
         { new: true }
     )
-    .then(user => { 
-        // Assuming you want to redirect to the user's profile
-        res.redirect('/users/' + user._id);
+    .then(updatedUser => { 
+        // Ensure that the redirect URL matches your user profile route
+        res.redirect('/users/' + req.params.userId);
     })
     .catch(error => {
         console.error(error);
@@ -128,6 +128,23 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.post('/:id', async (req, res) => {
+    const ids = req.body.ids;
+    const images = req.body.images;
+
+    const result = await db.User.updateOne(
+        { 'decks._id': req.params.id },
+        {
+            $push: {
+                'decks.$.userDeckCards': { $each: ids.map((id, index) => ({ id, image: images[index] })) }
+            }
+        }
+    );
+
+    if (result) {
+        res.json({ message: 'deck updated', ids, images });
+    }
+});
 
 
 

@@ -17,7 +17,7 @@ const api = require('./models');
 --------------------------------------------------------------- */
 
 const userCtrlr = require('./controllers/users')
-const userDeckCtrlr = require('./controllers/userdecks')
+const userDeckCtrlr = require('./controllers/userDecks')
 
 /* Create the Express app
 --------------------------------------------------------------- */
@@ -47,7 +47,7 @@ app.set('views', path.join(__dirname, 'views'));
 /* Middleware (app.use)
 --------------------------------------------------------------- */
 app.use(express.static('public'))
-
+app.use(express.json())
 // Body parser: used for POST/PUT/PATCH routes: 
 // this will take incoming strings from the body that are URL encoded and parse them 
 // into an object that can be accessed in the request parameter as a property called body (req.body).
@@ -66,7 +66,6 @@ app.get('/', (req, res) => {
 })
 
 
-// Get deck data and generate deck endpoints
 // Get deck data and generate deck endpoints
 app.get('/selectdeck/:name', async (req, res) => {
     const deckName = req.params.name;
@@ -92,10 +91,19 @@ app.get('/selectdeck/:name', async (req, res) => {
         // Fetch the cards for the selected deck
         const cardsResponse = await axiosInst.get(deckEndpoint);
         const deckCards = cardsResponse.data.data;
-        console.log(deckCards);
 
+        const users = await db.User.find({}).populate('decks')
+        .then(users => {
+            return users
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).send('An error occurred.');
+        });
+        console.log(users)
+        const alldecks = users.flatMap(u => u.decks)
         // Render the EJS template with deck data and the retrieved deck cards
-        res.render('decks/selectdeck', { deck, deckCards, deckName });
+        res.render('decks/selectdeck', { deck, deckCards, deckName, alldecks });
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred.');
