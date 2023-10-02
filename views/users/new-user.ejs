@@ -7,7 +7,8 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <h1>Faction Registration</h1>
-
+    <main>
+    <div class="forms">
     <h2> Create Your New Profile Below!</h2>
     <form method="POST" action="/users">
         <label for="name"> Name:</label>
@@ -30,6 +31,8 @@
 
         <button type="submit">Register</button>
     </form>
+</div>
+</main>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

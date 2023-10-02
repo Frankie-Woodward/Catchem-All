@@ -23,18 +23,23 @@
                 </td>
             </tr>
             <tr>
-                <h5>Cards:</h5>
-                <ul>
+                <div class="cards">
+                <h5 >Cards:</h5>
+                <ul> <div class="card-item">
                   <% userDeck.userDeckCards.forEach(card => { %>
                     <% if (card.id && card.image) { %>
+                       
                       <li>
                         Card ID: <%= card.id %>
                         <br>
                         Card Image: <img src="<%= card.image %>" alt="<%= card.id %>">
                       </li>
+                   
                     <% } %>
                   <% }); %>
+                </div>
                 </ul>   
+            </div>
             </tr>
         </table>
     </section>
