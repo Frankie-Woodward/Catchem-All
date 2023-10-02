@@ -8,15 +8,15 @@
 
 <body>
     <%- include('./partials/home-nav.ejs') %>
-    <h1>Welcome to "CATCH'EM ALL!" a Pokemon TCG Deck Building Application</h1>
-    
+    <h2>Welcome to "CATCH'EM ALL!" a Pokemon TCG Deck Building Application</h2>
+    <section class="card-search">
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
-        <section class="deck-scrollable">
+        <section class="deck-search">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
               <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="200%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="250%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Pokemon Card</text></svg>
                  </section>
                 <div class="card-body">
                     <input type="text" name="card-name" id="search">
@@ -34,6 +34,7 @@
        
         </div>
       </div>
+    </section>
     <!-- Decks -->
     <h2>All Standard Legal Decks</h2>
 
