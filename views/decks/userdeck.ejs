@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Deck</title>
-    <!-- Add any additional styles or scripts you need -->
+    <%- include('../partials/head.ejs', {title: 'Faction Member Deck'}) %>
+    <link rel="stylesheet" type="text/css" href="/styles/users.css">
 </head>
 <body>
-    <h1>Custom Deck</h1>
+    <%- include('../partials/nav.ejs') %>
+    <h1>View Your Deck</h1>
 
     <!-- Display deck details -->
     <section class="deck-details">
@@ -35,20 +34,18 @@
                       </li>
                     <% } %>
                   <% }); %>
-                </ul>
-                
-                
+                </ul>   
             </tr>
         </table>
     </section>
+    <a href="/userdecks/<%= userDeck._id %>/edit">Edit Your Deck</a>
     <form method="POST" action="/userdecks/<%= userDeck._id %>?_method=DELETE">
         <input class="btn" type="submit" value="Delete" />
     </form>
 
-        <!-- Add any other deck details you have -->
 
 </section>
-    <!-- Display cards -->
 
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>

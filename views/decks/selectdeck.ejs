@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Deck</title>
-    <link rel="stylesheet" href="/styles/decks.css">
-    <!-- Add any additional styles or scripts you need -->
+    <%- include('../partials/head.ejs', {title: 'Faction Members'}) %>
+    <link rel="stylesheet" type="text/css" href="/styles/users.css">
+    <link rel="stylesheet" type="text/css" href="/styles/decks.css">
 </head>
 <body>
+    <%- include('../partials/nav.ejs') %>
     <h1><%= deck.name.toUpperCase() %></h1>
 
     <!-- Display deck details -->
@@ -77,9 +76,7 @@ async function getcheckboxvalue(id) {
         });
     });
 }
-
-
 </script>
-
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>

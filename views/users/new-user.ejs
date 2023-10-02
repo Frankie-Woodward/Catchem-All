@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('../partials/head.ejs', {title: 'Faction Registration'}) %>
+    <link rel="stylesheet" type="text/css" href="/styles/users.css">
 </head>
 <body>
+    <%- include('../partials/nav.ejs') %>
     <h1>Faction Registration</h1>
 
     <h2> Create Your New Profile Below!</h2>
@@ -31,4 +31,5 @@
         <button type="submit">Register</button>
     </form>
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>

@@ -1,4 +1,12 @@
 /* CSS in your home.css or another stylesheet */
+
+header, footer, body {
+  font-family: 'Pixelify Sans', cursive;
+  font-family: 'Wellfleet', serif;
+}
+
+
+
 .decks-list {
     list-style: none;
     padding: 0;

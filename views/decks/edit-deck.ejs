@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Deck</title>
+    <%- include('../partials/head.ejs', {title: 'Edit Your Deck'}) %>
+    <link rel="stylesheet" type="text/css" href="/styles/users.css">
 </head>
 <body>
-    <h3>Edit Your Deck Here</h3>
+    <%- include('../partials/nav.ejs') %>
+    <h3>Edit <strong>'<%= userDeck.userDeckName %>'</strong> Here</h3>
 
     <form action="/userdecks/<%= userDeck._id %>" method="PUT">        <!-- Use POST method to update the deck -->
 
@@ -26,4 +26,5 @@
     </form>
     
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>

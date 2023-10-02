@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Factions!</title>
-</head>
-<body>
+    <head>
+        <%- include('../partials/head.ejs', {title: 'Faction Members'}) %>
+        <link rel="stylesheet" type="text/css" href="/styles/users.css">
+    </head>
+    <body>
+        <%- include('../partials/nav.ejs') %>
     <h1>Members of the Pokemon Factions!</h1>
     <p>Delete, Update, Create Users</p>
     <% for (let user of users) { %>
@@ -25,4 +25,5 @@
          
          <% } %>
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>
