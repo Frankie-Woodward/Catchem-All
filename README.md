@@ -1,9 +1,73 @@
 # Catchem-All
 A "Pokemon Trading Card Game" Application
 Project Link: 'https://github.com/Frankie-Woodward/Catchem-All'
-screenshot of app: public/assets/Screenshot of App.png
-add  wireframe to readme
-home page or all pages: background image size st
+
+Wireframe 
+
+Splash Page
+
+| Pokemon Battle Art |
+| |
+| Enter Here |
+
+Main Page
+
+| Pokemon TCG Card Manager |
+
+| Navbar: |
+| [Home] [Decks] [Profile] [Logout] |
+| |
+| +--------------------------------+
+| | |
+| | Pokemon Card Collection |
+| | |
+| | [Card 1] [Card 2] ... |
+| | |
+| +--------------------------------+
+| Links |
+
+User Page
+
+| User's Pokemon Decks |
+
+| Navbar: |
+| [Home] [Decks] [Profile] [Logout] |
+| |
+| +--------------------------------+
+| | |
+| | User's Custom Decks |
+| | |
+| | [Deck 1] [Deck 2] ... |
+| | |
+| +--------------------------------+
+| |
+
+Individual Official Deck Page
+
+| Official Pokemon TCG Deck Viewer |
+
+| Navbar: |
+| [Home] [Decks] [Profile] [Logout] |
+| |
+| +----------------------------------+
+| | |
+| | Deck: [Official Deck] |
+| | |
+| | +--------------------------+ |
+| | | |
+| | | [Card 1] [Card 2] |
+| | | |
+| | | [Card 3] [Card 4] |
+| | | |
+| | | [Card 5] [Card 6] |
+| | | |
+| | | ... |
+| | | |
+| | +--------------------------+ |
+| | |
+| +----------------------------------+
+| |
+
 ![image](https://github.com/Frankie-Woodward/Catchem-All/assets/142553084/298f7873-5787-4034-ac99-9f46e89315fa)
 
 
@@ -30,6 +94,13 @@ Install:
 5. User selects all desired cards on that deck's page. 
 6. At the bottom the user can click to add all selected cards to their deck
 
+USER STORIES
+1. Users will be shown the rarest cards and only all decks that are currently being used for the official trading card game
+2. They can browse cards, search cards, and click on a card to view all contents
+3. Users will want to be able to save or "like" a card and add it to their collection for later view
+4. Users will then be able to signup and start saving cards in their own custom decks!
+
+   
 Unsolved Issues and Stretch Goals for future use
 
 1. My first issue was with trying to add the api into my projeect:
