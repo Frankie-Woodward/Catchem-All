@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 // // using the URL parameter (which is the document _id)
 router.get('/:id', function (req, res) {
     db.User.findById(req.params.id)
-        .then(user => res.render('users/userProfile', { user: user}))
+        .then(user => res.render('users/user-profile', { user: user}))
         .catch(() => res.send('404 Error: Page Not Found'))
 })
 
