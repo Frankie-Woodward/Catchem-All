@@ -2,9 +2,10 @@
 A "Pokemon Trading Card Game" Application
 Project Link: 'https://github.com/Frankie-Woodward/Catchem-All'
 screenshot of app: public/assets/Screenshot of App.png
-
 add  wireframe to readme
 home page or all pages: background image size st
+![image](https://github.com/Frankie-Woodward/Catchem-All/assets/142553084/298f7873-5787-4034-ac99-9f46e89315fa)
+
 
 Technologies:
 
